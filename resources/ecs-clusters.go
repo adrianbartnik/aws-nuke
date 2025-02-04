@@ -57,7 +57,7 @@ func (l *ECSClusterLister) List(_ context.Context, o interface{}) ([]resource.Re
 		for _, clusterChunk := range slices.Chunk(output.ClusterArns, 100) {
 			clusters, err := svc.DescribeClusters(&ecs.DescribeClustersInput{
 				Clusters: clusterChunk,
-				Include:  []*string{aws.String("TAGS")}, //#abcd
+				Include:  []*string{aws.String("TAGS")}, //#abcde
 			})
 			if err != nil {
 				logrus.WithError(err).Error("unable to retrieve clusters")
